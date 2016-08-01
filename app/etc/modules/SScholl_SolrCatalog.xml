@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<SScholl_SolrCatalog>
+			<active>true</active>
+			<codePool>local</codePool>
+			<depends>
+				<SScholl_Solr />
+			</depends>
+		</SScholl_SolrCatalog>
+	</modules>
+</config>

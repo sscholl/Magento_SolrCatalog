@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="sschollsolrcatalog" version="1.0">
+	<fields>
+		<field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+		<field name="text" type="string" indexed="false" stored="false" />
+		<field name="name" type="string" indexed="false" stored="false" />
+		<field name="_version_" type="long" indexed="true" stored="true" />
+
+		<field name="file_name" type="string" indexed="true" stored="true" />
+		<field name="attribute_set_id_magento" type="int" indexed="true" stored="true" />
+		<field name="type_id_magento" type="string" indexed="true" stored="true" />
+		<field name="created_at_magento" type="date" indexed="true" stored="true" />
+		<field name="updated_at_magento" type="date" indexed="true" stored="true" />
+		<field name="sku_magento" type="text_en_splitting_tight" indexed="true" stored="true"
+			omitNorms="true" />
+
+		<dynamicField name="*_int" type="int" indexed="true" stored="true" />
+		<dynamicField name="*_int_stored" type="int" indexed="false" stored="true" />
+		<dynamicField name="*_int_mv" type="int" indexed="true" stored="true" multiValued="true" />
+		<dynamicField name="*_boo" type="boolean" indexed="true" stored="true" />
+		<dynamicField name="*_boo_stored" type="boolean" indexed="false" stored="true" />
+		<dynamicField name="*_boo_mv" type="boolean" indexed="true" stored="true"
+			multiValued="true" />
+		<dynamicField name="*_flt" type="float" indexed="true" stored="true" />
+		<dynamicField name="*_flt_stored" type="float" indexed="false" stored="true" />
+		<dynamicField name="*_flt_mv" type="float" indexed="true" stored="true" multiValued="true" />
+		<dynamicField name="*_dou" type="double" indexed="true" stored="true" />
+		<dynamicField name="*_dou_stored" type="double" indexed="false" stored="true" />
+		<dynamicField name="*_dou_mv" type="double" indexed="true" stored="true" multiValued="true" />
+		<dynamicField name="*_str" type="text_general" indexed="true" stored="true" />
+		<dynamicField name="*_str_stored" type="string" indexed="false" stored="true" />
+		<dynamicField name="*_str_mv" type="string" indexed="true" stored="true" multiValued="true" />
+		<dynamicField name="*_txt" type="text_general" indexed="true" stored="true" />
+		<dynamicField name="*_txt_stored" type="text_general" indexed="false" stored="true" />
+		<dynamicField name="*_txt_mv" type="text_general" indexed="true" stored="true"
+			multiValued="true" />
+		<dynamicField name="*_dtt" type="date" indexed="true" stored="true" />
+		<dynamicField name="*_dtt_stored" type="date" indexed="false" stored="true" />
+		<dynamicField name="*_dtt_mv" type="date" indexed="true" stored="true" multiValued="true" />
+	</fields>
+	<uniqueKey>id</uniqueKey>
+	<types>
+		<fieldType name="string" class="solr.StrField" sortMissingLast="true" />
+		<fieldType name="boolean" class="solr.BoolField" sortMissingLast="true" />
+		<fieldType name="int" class="solr.TrieIntField" precisionStep="8" positionIncrementGap="0" />
+		<fieldType name="float" class="solr.TrieFloatField" precisionStep="0"
+			positionIncrementGap="0" />
+		<fieldType name="long" class="solr.TrieLongField" precisionStep="0"
+			positionIncrementGap="0" />
+		<fieldType name="double" class="solr.TrieDoubleField" precisionStep="0"
+			positionIncrementGap="0" />
+		<fieldType name="date" class="solr.TrieDateField" precisionStep="0"
+			positionIncrementGap="0" />
+		<fieldType name="text_general" class="solr.TextField" sortMissingLast="true" omitNorms="true">
+			<analyzer type="index">
+				<tokenizer class="solr.StandardTokenizerFactory" />
+				<filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"
+					enablePositionIncrements="true" />
+				<filter class="solr.LowerCaseFilterFactory" />
+			</analyzer>
+			<analyzer type="query">
+				<tokenizer class="solr.StandardTokenizerFactory" />
+				<filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"
+					enablePositionIncrements="true" />
+				<filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true"
+					expand="true" />
+				<filter class="solr.LowerCaseFilterFactory" />
+			</analyzer>
+		</fieldType>
+	</types>
+</schema>

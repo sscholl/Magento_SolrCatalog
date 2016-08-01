@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<menu>
+		<catalog>
+			<children>
+				<sschollsolrcatalog_product translate="title" module="sschollsolrcatalog">
+					<title>Manage Solr Products</title>
+					<sort_order>0</sort_order>
+					<action>sschollsolrcatalog/adminhtml_catalog_product/index</action>
+				</sschollsolrcatalog_product>
+			</children>
+		</catalog>
+	</menu>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<sschollsolrcatalog translate="title" module="sschollsolrcatalog">
+										<title>Solr Catalog</title>
+									</sschollsolrcatalog>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>
